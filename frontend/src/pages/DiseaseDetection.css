@@ -1,62 +1,72 @@
 .disease-page{
-padding:20px;
+padding:30px;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
-.upload-section{
+.upload-box{
 display:flex;
 gap:10px;
 margin-top:20px;
 }
 
-.upload-section button{
-padding:10px 20px;
+.upload-box button{
 background:#0b3d2e;
 color:white;
+padding:10px 20px;
 border:none;
 border-radius:8px;
 cursor:pointer;
 }
 
 .preview img{
-width:260px;
 margin-top:20px;
+width:260px;
 border-radius:12px;
 box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 .result-card{
-margin-top:20px;
+margin-top:25px;
+background:linear-gradient(145deg,#ffffff,#f0f4f3);
 padding:25px;
-background:white;
-border-radius:16px;
-box-shadow:0 15px 40px rgba(0,0,0,0.1);
-width:420px;
+border-radius:18px;
+box-shadow:0 20px 50px rgba(0,0,0,0.15);
+width:450px;
+transition:0.3s;
 }
 
 .result-card:hover{
 transform:translateY(-5px);
-transition:0.3s;
 }
 
 .disease-name{
+font-size:24px;
+font-weight:700;
 color:#0b3d2e;
-font-size:22px;
-margin-bottom:10px;
+}
+
+.tamil{
+margin-top:12px;
+font-size:15px;
+color:#2c3e50;
+background:#eef7f4;
+padding:10px;
+border-radius:10px;
 }
 
 .severity{
 font-weight:600;
-margin-top:5px;
 }
 
-.desc{
-margin-top:10px;
-color:#555;
-}
+.severity.high{ color:red; }
+.severity.medium{ color:orange; }
+.severity.low{ color:green; }
 
-.treatment, .yield{
+.treatment, .yield, .top-preds{
 margin-top:15px;
-padding:12px;
+padding:10px;
 background:#f4f7f6;
 border-radius:10px;
 }

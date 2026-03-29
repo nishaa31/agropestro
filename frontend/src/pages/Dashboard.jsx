@@ -7,8 +7,6 @@ export default function Dashboard() {
   return (
     <div style={{ display: "flex" }}>
 
-      <Sidebar />
-
       <div style={{ padding: "30px", flex: 1 }}>
 
         <h2>வணக்கம் {user.name || "Farmer"} 👋</h2>

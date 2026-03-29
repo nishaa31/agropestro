@@ -1,92 +1,87 @@
-import { useNavigate, useLocation } from 'react-router-dom'
-import './Sidebar.css'
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import "./Sidebar.css";
 
-const navItems = [
-  {
-    path: '/',
-    label: 'Dashboard',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <rect x="3" y="3" width="7" height="7" rx="1"/>
-        <rect x="14" y="3" width="7" height="7" rx="1"/>
-        <rect x="3" y="14" width="7" height="7" rx="1"/>
-        <rect x="14" y="14" width="7" height="7" rx="1"/>
-      </svg>
-    ),
-  },
-  {
-    path: '/disease',
-    label: 'Disease Detection',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="11" cy="11" r="8"/>
-        <path d="M21 21l-4.35-4.35"/>
-      </svg>
-    ),
-    badge: 'alert',
-  },
-  {
-    path: '/yield',
-    label: 'Yield Prediction',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-      </svg>
-    ),
-  },
-]
+import { Menu, Home, Leaf, TrendingUp, CloudSun, Store, User, LogOut} from "lucide-react";
 
-export default function Sidebar() {
-  const navigate  = useNavigate()
-  const location  = useLocation()
-  const user      = JSON.parse(localStorage.getItem('agropestro_user') || '{}')
+export default function Sidebar(){
+const [showProfile, setShowProfile] = useState(false);
+const userData = JSON.parse(localStorage.getItem("agropestro_user"));
+const userName = userData?.name || "Farmer";
+const [collapsed, setCollapsed] = useState(false);
+return(
 
-  const handleLogout = () => {
-    localStorage.removeItem('agropestro_user')
-    navigate('/login')
-  }
+<div className={collapsed ? "sidebar collapsed" : "sidebar"}>
 
-  return (
-    <aside className="sidebar">
-      {/* Logo */}
-      <div className="sidebar-logo">
-        <div className="logo-name">AgroPestro</div>
-        <div className="logo-tag">Smart Wheat Intelligence</div>
-      </div>
+<div className="top-section">
+<button className="menu-btn" onClick={()=>setCollapsed(!collapsed)}>
+<Menu size={22}/>
+</button>
 
-      {/* Nav */}
-      <nav className="sidebar-nav">
-        <div className="nav-section-label">Main</div>
-        {navItems.map((item) => (
-          <div
-            key={item.path}
-            className={`nav-item ${location.pathname === item.path ? 'active' : ''}`}
-            onClick={() => navigate(item.path)}
-          >
-            <span className="nav-icon">{item.icon}</span>
-            <span className="nav-label">{item.label}</span>
-            {item.badge && <span className="nav-badge">!</span>}
-          </div>
-        ))}
-      </nav>
+{!collapsed && <h2 className="logo">AgroPestro</h2>}
+</div>
 
-      {/* User area */}
-      <div className="sidebar-user">
-        <div className="user-avatar">
-          {user.name ? user.name.charAt(0).toUpperCase() : 'F'}
-        </div>
-        <div className="user-info">
-          <div className="user-name">{user.name || 'Farmer'}</div>
-          <div className="user-loc">{user.location || 'Tamil Nadu'}</div>
-        </div>
-        <button className="logout-btn" onClick={handleLogout} title="Logout">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-            <polyline points="16 17 21 12 16 7"/>
-            <line x1="21" y1="12" x2="9" y2="12"/>
-          </svg>
-        </button>
-      </div>
-    </aside>
-  )
+<nav>
+
+<NavLink to="/" className="nav-item">
+<Home size={20}/>
+{!collapsed && <span>Home</span>}
+</NavLink>
+
+<NavLink to="/disease" className="nav-item">
+<Leaf size={20}/>
+{!collapsed && <span>Scan Crop</span>}
+</NavLink>
+
+<NavLink to="/yield" className="nav-item">
+<TrendingUp size={20}/>
+{!collapsed && <span>Yield</span>}
+</NavLink>
+
+<NavLink to="/weather" className="nav-item">
+<CloudSun size={20}/>
+{!collapsed && <span>Weather</span>}
+</NavLink>
+
+<NavLink to="/market" className="nav-item">
+<Store size={20}/>
+{!collapsed && <span>Market</span>}
+</NavLink>
+
+</nav>
+
+<div className="user-section">
+
+<div 
+className="user-info"
+onClick={()=>setShowProfile(!showProfile)}
+>
+<User size={18} />
+{!collapsed && <span>{userName}</span>}
+</div>
+
+{showProfile && !collapsed && (
+<div className="profile-popup">
+<p><b>Name:</b> {userData?.name}</p>
+<p><b>Phone:</b> {userData?.phone}</p>
+<p><b>Location:</b> {userData?.location}</p>
+</div>
+)}
+
+<div 
+className="logout-btn"
+onClick={()=>{
+localStorage.removeItem("agropestro_user");
+window.location.href="/login";
+}}
+>
+<LogOut size={18} /> {!collapsed && "Logout"}
+</div>
+
+</div>
+
+
+</div>
+
+)
 }
