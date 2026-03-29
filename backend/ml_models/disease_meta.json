@@ -1,9 +1,0 @@
-{
-  "classes": [
-    "Healthy",
-    "septoria",
-    "stripe_rust"
-  ],
-  "img_size": 224,
-  "val_accuracy": 1.0
-}
