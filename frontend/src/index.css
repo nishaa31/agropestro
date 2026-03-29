@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #2D6A4F;
+  --green-light: #40916C;
+  --green-pale: #D8F3DC;
+  --amber: #E9961A;
+  --amber-light: #FFF3CD;
+  --blue: #1B5FA8;
+  --blue-light: #EBF4FF;
+  --red: #C0392B;
+  --red-light: #FDECEA;
+  --purple: #6C3FC5;
+  --purple-light: #F0EBFF;
+  --cream: #F8F4EE;
+  --white: #ffffff;
+  --text: #1A2E1E;
+  --muted: #6B7C6E;
+  --border: #EBE6DE;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+input, select {
+  font-family: var(--font-body);
+}

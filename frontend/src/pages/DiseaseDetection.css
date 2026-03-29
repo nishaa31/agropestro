@@ -1,0 +1,62 @@
+.disease-page{
+padding:20px;
+}
+
+.upload-section{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.upload-section button{
+padding:10px 20px;
+background:#0b3d2e;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.preview img{
+width:260px;
+margin-top:20px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.result-card{
+margin-top:20px;
+padding:25px;
+background:white;
+border-radius:16px;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+width:420px;
+}
+
+.result-card:hover{
+transform:translateY(-5px);
+transition:0.3s;
+}
+
+.disease-name{
+color:#0b3d2e;
+font-size:22px;
+margin-bottom:10px;
+}
+
+.severity{
+font-weight:600;
+margin-top:5px;
+}
+
+.desc{
+margin-top:10px;
+color:#555;
+}
+
+.treatment, .yield{
+margin-top:15px;
+padding:12px;
+background:#f4f7f6;
+border-radius:10px;
+}

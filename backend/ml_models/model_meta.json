@@ -1,0 +1,45 @@
+{
+  "feature_names": [
+    "Crop_Type",
+    "Soil_Type",
+    "Soil_pH",
+    "Temperature",
+    "Humidity",
+    "Wind_Speed",
+    "N",
+    "P",
+    "K",
+    "Soil_Quality"
+  ],
+  "categorical_cols": [
+    "Crop_Type",
+    "Soil_Type"
+  ],
+  "target_col": "Crop_Yield",
+  "encoder_classes": {
+    "Crop_Type": [
+      "Barley",
+      "Corn",
+      "Cotton",
+      "Potato",
+      "Rice",
+      "Soybean",
+      "Sugarcane",
+      "Sunflower",
+      "Tomato",
+      "Wheat"
+    ],
+    "Soil_Type": [
+      "Clay",
+      "Loamy",
+      "Peaty",
+      "Saline",
+      "Sandy"
+    ]
+  },
+  "metrics": {
+    "mae": 3.3355,
+    "rmse": 4.8486,
+    "r2": 0.9535
+  }
+}
